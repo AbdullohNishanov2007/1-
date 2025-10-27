@@ -1,3 +1,13 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://1c-outsource.kg/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /private/

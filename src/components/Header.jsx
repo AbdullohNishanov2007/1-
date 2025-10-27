@@ -22,8 +22,9 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo" onClick={closeMenu}>
-            <div className="logo-icon">1C</div>
-            <span>Аутсорсинг</span>
+            {/* <div className="logo-icon">1C</div> */}
+            <img className='logo_img' src="/logo.png" alt="" />
+            {/* <span>Аутсорсинг</span> */}
           </Link>
           
           <div className="mobile-menu" onClick={toggleMenu}>
@@ -76,7 +77,7 @@ const Header = () => {
 
 <style jsx>{`
   .header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%);
     color: white;
     padding: 1rem 0;
     position: sticky;
@@ -90,6 +91,7 @@ const Header = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
   .logo {
@@ -101,6 +103,10 @@ const Header = () => {
     align-items: center;
     transition: transform 0.3s ease;
   }
+
+  .logo_img {
+    height: 80px;
+    }
 
   .logo:hover {
     transform: scale(1.05);

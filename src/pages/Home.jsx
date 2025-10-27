@@ -119,7 +119,7 @@ const Home = () => {
 
       <style jsx>{`
         .hero {
-          background: linear-gradient(rgba(204, 0, 0, 0.8), rgba(255, 102, 0, 0.9));
+          background: linear-gradient(#f6cd00, rgba(255, 102, 0, 0.9));
           color: white;
           padding: 5rem 0;
           text-align: center;

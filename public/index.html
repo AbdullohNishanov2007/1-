@@ -1,43 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="ru">
+<head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Основные мета-теги -->
+    <title>1С Аутсорсинг - Автоматизация бизнеса в Бишкеке | Внедрение 1С</title>
+    <meta name="description" content="Профессиональные услуги 1С в Бишкеке. Внедрение, разработка, сопровождение 1С. Автоматизация торговли, производства, ресторанов. ☎ +996 555 250 778">
+    <meta name="keywords" content="1С, автоматизация, Бишкек, внедрение 1С, разработка 1С, сопровождение 1С, торговля, производство, рестораны, бизнес">
+    
+    <!-- Open Graph для социальных сетей -->
+    <meta property="og:title" content="1С Аутсорсинг - Автоматизация бизнеса в Бишкеке">
+    <meta property="og:description" content="Профессиональные услуги 1С: внедрение, разработка, сопровождение. Автоматизируем бизнес под ключ в Бишкеке">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://1c-outsource.kg">
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg">
+    <meta property="og:site_name" content="1С Аутсорсинг">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="1С Аутсорсинг - Автоматизация бизнеса в Бишкеке">
+    <meta name="twitter:description" content="Профессиональные услуги 1С: внедрение, разработка, сопровождение">
+    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="author" content="1С Аутсорсинг">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Russian">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Гео-метатеги -->
+    <meta name="geo.region" content="KG-B">
+    <meta name="geo.placename" content="Бишкек">
+    <meta name="geo.position" content="42.874679;74.590393">
+    <meta name="ICBM" content="42.874679, 74.590393">
+    
+    <!-- Телефонные ссылки -->
+    <meta name="format-detection" content="telephone=yes">
+    
+    <!-- Цвет браузера мобильных устройств -->
+    <meta name="theme-color" content="#ff6b00">
+    <meta name="msapplication-navbutton-color" content="#ff6b00">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ff6b00">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://1c-outsource.kg">
+    
+    <!-- Альтернативные языки (если нужно) -->
+    <link rel="alternate" hreflang="ru" href="https://1c-outsource.kg" />
+    <link rel="alternate" hreflang="kg" href="https://1c-outsource.kg/kg" />
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "1С Аутсорсинг",
+      "description": "Профессиональные услуги по автоматизации бизнеса на базе 1С в Бишкеке",
+      "url": "https://1c-outsource.kg",
+      "logo": "https://1c-outsource.kg/logo.png",
+      "telephone": "+996555250778",
+      "email": "info@1c-outsource.kg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Токтогула 15А",
+        "addressLocality": "Бишкек",
+        "addressCountry": "KG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "42.874679",
+        "longitude": "74.590393"
+      },
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "sameAs": [
+        "https://www.instagram.com/1c_outsource_kg",
+        "https://www.facebook.com/1coutsourcekg"
+      ],
+      "serviceType": [
+        "IT консалтинг",
+        "Внедрение 1С",
+        "Разработка программного обеспечения",
+        "Техническая поддержка"
+      ]
+    }
+    </script>
+    
+    <!-- Дополнительный structured data для локального бизнеса -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "1С Аутсорсинг",
+      "image": "https://1c-outsource.kg/og-image.jpg",
+      "description": "Профессиональные услуги 1С в Бишкеке: внедрение, разработка, сопровождение",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Токтогула 15А",
+        "addressLocality": "Бишкек",
+        "addressCountry": "KG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "42.874679",
+        "longitude": "74.590393"
+      },
+      "url": "https://1c-outsource.kg",
+      "telephone": "+996555250778",
+      "openingHours": "Mo-Fr 09:00-18:00, Sa 10:00-16:00",
+      "priceRange": "$$",
+      "areaServed": "Бишкек и Кыргызстан"
+    }
+    </script>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
+    <title>1С Аутсорсинг - Автоматизация бизнеса</title>
+</head>
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+</body>
 </html>
