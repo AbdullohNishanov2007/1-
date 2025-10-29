@@ -5,13 +5,13 @@ const Contact = () => {
     {
       icon: "📞",
       title: "Телефон",
-      details: ["+996 555 250 778", "+996 555 250 779"],
+      details: ["+996 555 250 778", "+996 555 250 778"],
       description: "Звоните в рабочее время"
     },
     {
       icon: "✉️",
       title: "Email",
-      details: ["info@1c-outsource.kg", "support@1c-outsource.kg"],
+      details: ["cryptolevkg@gmail.com"],
       description: "Ответим в течение 2 часов"
     },
     {
@@ -30,13 +30,18 @@ const Contact = () => {
 
   const services = [
     "Внедрение 1С",
-    "Разработка под задачи", 
+    "Разработка под задачи",
     "Техническая поддержка",
     "Обучение персонала",
     "Интеграция с сайтами",
     "Подключение оборудования",
     "Миграция данных"
   ];
+
+  // Функция для обработки клика по email
+  const handleEmailClick = (email) => {
+    window.location.href = `mailto:${email}`;
+  };
 
   return (
     <div className="page-container">
@@ -45,16 +50,16 @@ const Contact = () => {
           <h1>Контакты</h1>
           <p>Свяжитесь с нами для консультации по автоматизации вашего бизнеса</p>
         </div>
-        
+
         <section className="section">
           <div className="contact-content">
             <div className="contact-main">
               <h2>Наши контакты</h2>
               <p className="contact-description">
-                Мы находимся в центре Бишкека и всегда готовы помочь вам с автоматизацией бизнеса. 
+                Мы находимся в центре Бишкека и всегда готовы помочь вам с автоматизацией бизнеса.
                 Приезжайте в наш офис для личной консультации или свяжитесь удобным для вас способом.
               </p>
-              
+
               <div className="contact-grid">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="contact-card">
@@ -62,7 +67,26 @@ const Contact = () => {
                     <h3>{item.title}</h3>
                     <div className="contact-details">
                       {item.details.map((detail, idx) => (
-                        <p key={idx} className="contact-detail">{detail}</p>
+                        <p key={idx} className="contact-detail">
+                          {item.title === "Email" ? (
+                            <a 
+                              href={`mailto:${detail}`} 
+                              className="email-link"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleEmailClick(detail);
+                              }}
+                            >
+                              {detail}
+                            </a>
+                          ) : item.title === "Телефон" ? (
+                            <a href={`tel:${detail.replace(/\s/g, '')}`} className="phone-link">
+                              {detail}
+                            </a>
+                          ) : (
+                            detail
+                          )}
+                        </p>
                       ))}
                     </div>
                     <p className="contact-note">{item.description}</p>
@@ -76,16 +100,28 @@ const Contact = () => {
                   <a href="tel:+996555250778" className="action-btn primary">
                     📞 Позвонить сейчас
                   </a>
-                  <a href="https://wa.me/996555250778" className="action-btn whatsapp">
+                  <a 
+                    href="https://wa.me/996555250778" 
+                    className="action-btn whatsapp"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
                     💬 Написать в WhatsApp
                   </a>
-                  <a href="mailto:info@1c-outsource.kg" className="action-btn email">
+                  <a 
+                    href="mailto:cryptolevkg@gmail.com" 
+                    className="action-btn email"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleEmailClick('cryptolevkg@gmail.com');
+                    }}
+                  >
                     ✉️ Отправить email
                   </a>
                 </div>
               </div>
             </div>
-            
+
             <div className="contact-sidebar">
               <div className="services-sidebar">
                 <h3>Наши услуги</h3>
@@ -110,85 +146,85 @@ const Contact = () => {
           </div>
         </section>
 
-<section className="section map-section">
-  <div className="container">
-    <div className="section-title">
-      <h2>Как нас найти</h2>
-      <p>Мы находимся в центре Бишкека, рядом с главными достопримечательностями</p>
-    </div>
-    
-    <div className="location-info">
-      <div className="location-details">
-        <div className="location-card">
-          <h3>📍 Наш офис</h3>
-          <div className="address">
-            <strong>г. Бишкек, ул. Токтогула 15А</strong>
-            <p>Центральный район, 3 этаж</p>
-          </div>
-          
-          <div className="landmarks">
-            <h4>Рядом с нами:</h4>
-            <ul>
-              <li>🏛️ В 5 минутах от площади Ала-Тоо</li>
-              <li>🏬 Рядом с ТЦ «ЦУМ»</li>
-              <li>🚇 Ближайшая остановка «Дубовый парк»</li>
-              <li>🅿️ Есть парковка для клиентов</li>
-            </ul>
-          </div>
-        </div>
+        <section className="section map-section">
+          <div className="container">
+            <div className="section-title">
+              <h2>Как нас найти</h2>
+              <p>Мы находимся в центре Бишкека, рядом с главными достопримечательностями</p>
+            </div>
 
-        <div className="transport-info">
-          <h4>Как добраться:</h4>
-          <div className="transport-options">
-            <div className="transport-item">
-              <span className="transport-icon">🚌</span>
-              <div>
-                <strong>Автобусы:</strong> 1, 5, 11, 12, 24
-              </div>
-            </div>
-            <div className="transport-item">
-              <span className="transport-icon">🚕</span>
-              <div>
-                <strong>Такси:</strong> 5-7 минут от центра
-              </div>
-            </div>
-            <div className="transport-item">
-              <span className="transport-icon">🚗</span>
-              <div>
-                <strong>На машине:</strong> удобный подъезд с ул. Токтогула
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div className="location-info">
+              <div className="location-details">
+                <div className="location-card">
+                  <h3>📍 Наш офис</h3>
+                  <div className="address">
+                    <strong>г. Бишкек, ул. Токтогула 15А</strong>
+                    <p>Центральный район, 3 этаж</p>
+                  </div>
 
-      <div className="map-placeholder">
-        <div className="map-content">
-          <h3>🗺️ Мы здесь!</h3>
-          <p>ул. Токтогула 15А, Бишкек</p>
-          <div className="map-actions">
-            <a 
-              href="https://2gis.kg/bishkek/geo/70030076354503036/74.624897%2C42.871458?m=74.624867%2C42.871592%2F19.98" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn navigation-btn"
-            >
-              📍 Построить маршрут в 2GIS
-            </a>
-            <a 
-              href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%A2%D0%BE%D0%BA%D1%82%D0%BE%D0%B3%D1%83%D0%BB%D0%B0+15%D0%90,+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA/@42.874679,74.590393,17z/data=!3m1!4b1!4m6!3m5!1s0x389eb7d13c6f19c5:0x56126be5d0bd6c7f!8m2!3d42.874679!4d74.590393!16s%2Fg%2F11c2m5_qb5?entry=ttu" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn navigation-btn"
-            >
-              🗺️ Открыть в Google Maps
-            </a>
+                  <div className="landmarks">
+                    <h4>Рядом с нами:</h4>
+                    <ul>
+                      <li>🏛️ В 5 минутах от площади Ала-Тоо</li>
+                      <li>🏬 Рядом с ТЦ «ЦУМ»</li>
+                      <li>🚇 Ближайшая остановка «Дубовый парк»</li>
+                      <li>🅿️ Есть парковка для клиентов</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="transport-info">
+                  <h4>Как добраться:</h4>
+                  <div className="transport-options">
+                    <div className="transport-item">
+                      <span className="transport-icon">🚌</span>
+                      <div>
+                        <strong>Автобусы:</strong> 1, 5, 11, 12, 24
+                      </div>
+                    </div>
+                    <div className="transport-item">
+                      <span className="transport-icon">🚕</span>
+                      <div>
+                        <strong>Такси:</strong> 5-7 минут от центра
+                      </div>
+                    </div>
+                    <div className="transport-item">
+                      <span className="transport-icon">🚗</span>
+                      <div>
+                        <strong>На машине:</strong> удобный подъезд с ул. Токтогула
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="map-placeholder">
+                <div className="map-content">
+                  <h3>🗺️ Мы здесь!</h3>
+                  <p>ул. Токтогула 15А, Бишкек</p>
+                  <div className="map-actions">
+                    <a
+                      href="https://2gis.kg/bishkek/geo/70030076354503036/74.624897%2C42.871458?m=74.624867%2C42.871592%2F19.98"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn navigation-btn"
+                    >
+                      📍 Построить маршрут в 2GIS
+                    </a>
+                    <a
+                      href="https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%A2%D0%BE%D0%BA%D1%82%D0%BE%D0%B3%D1%83%D0%BB%D0%B0+15%D0%90,+%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA/@42.874679,74.590393,17z/data=!3m1!4b1!4m6!3m5!1s0x389eb7d13c6f19c5:0x56126be5d0bd6c7f!8m2!3d42.874679!4d74.590393!16s%2Fg%2F11c2m5_qb5?entry=ttu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn navigation-btn"
+                    >
+                      🗺️ Открыть в Google Maps
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
         <section className="section cta-section">
           <div className="container">
@@ -199,8 +235,23 @@ const Contact = () => {
                 <a href="tel:+996555250778" className="btn cta-btn">
                   📞 Позвонить сейчас
                 </a>
-                <a href="https://wa.me/996555250778" className="btn cta-btn whatsapp">
+                <a 
+                  href="https://wa.me/996555250778" 
+                  className="btn cta-btn whatsapp"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   💬 Написать в WhatsApp
+                </a>
+                <a 
+                  href="mailto:cryptolevkg@gmail.com" 
+                  className="btn cta-btn email"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleEmailClick('cryptolevkg@gmail.com');
+                  }}
+                >
+                  ✉️ Отправить заявку
                 </a>
               </div>
             </div>
@@ -209,6 +260,71 @@ const Contact = () => {
       </div>
 
       <style jsx>{`
+        .page-container {
+          min-height: 100vh;
+          background: #f8f9fa;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .page-header {
+          text-align: center;
+          padding: 3rem 0;
+          background: linear-gradient(135deg, var(--primary), var(--accent));
+          color: white;
+          margin-bottom: 2rem;
+          border-radius: 0 0 20px 20px;
+        }
+
+        .page-header h1 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        .page-header p {
+          font-size: 1.2rem;
+          opacity: 0.9;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+          color: var(--primary);
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 12px 24px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          border: none;
+          cursor: pointer;
+          text-align: center;
+        }
+
+        :root {
+          --primary: #FF6B00;
+          --accent: #FF8E00;
+          --secondary: #2E86AB;
+          --dark: #333;
+          --light: #f8f9fa;
+        }
+
         .contact-content {
           display: grid;
           grid-template-columns: 2fr 1fr;
@@ -299,6 +415,8 @@ const Contact = () => {
           font-weight: 600;
           transition: all 0.3s ease;
           text-align: center;
+          border: none;
+          cursor: pointer;
         }
 
         .action-btn.primary {
@@ -510,6 +628,12 @@ const Contact = () => {
           background: rgba(255, 255, 255, 0.2);
           color: white;
           border: 2px solid white;
+          padding: 1rem 1.5rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          text-align: center;
         }
 
         .navigation-btn:hover {
@@ -521,6 +645,7 @@ const Contact = () => {
           background: linear-gradient(135deg, var(--primary), var(--accent));
           color: white;
           text-align: center;
+          padding: 4rem 0;
         }
 
         .cta-content h2 {
@@ -545,6 +670,11 @@ const Contact = () => {
           background: rgba(255, 255, 255, 0.2);
           color: white;
           border: 2px solid white;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
@@ -560,6 +690,38 @@ const Contact = () => {
         .cta-btn.whatsapp:hover {
           background: #25D366;
           color: white;
+        }
+
+        .cta-btn.email {
+          background: rgba(234, 67, 53, 0.2);
+          border-color: #ea4335;
+        }
+
+        .cta-btn.email:hover {
+          background: #ea4335;
+          color: white;
+        }
+
+        .email-link {
+          color: var(--primary);
+          text-decoration: none;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
+        .email-link:hover {
+          text-decoration: underline;
+        }
+
+        .phone-link {
+          color: var(--dark);
+          text-decoration: none;
+          font-weight: 500;
+        }
+
+        .phone-link:hover {
+          color: var(--primary);
+          text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -582,10 +744,19 @@ const Contact = () => {
 
           .cta-buttons {
             flex-direction: column;
+            align-items: center;
           }
 
           .map-actions {
             flex-direction: column;
+          }
+
+          .page-header h1 {
+            font-size: 2.5rem;
+          }
+
+          .contact-main h2 {
+            font-size: 1.8rem;
           }
         }
       `}</style>
